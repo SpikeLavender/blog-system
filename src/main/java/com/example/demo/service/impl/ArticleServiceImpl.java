@@ -3,6 +3,8 @@ package com.example.demo.service.impl;
 import com.example.demo.entity.Article;
 import com.example.demo.mapper.ArticleMapper;
 import com.example.demo.service.ArticleService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +18,9 @@ public class ArticleServiceImpl implements ArticleService {
 	private ArticleMapper articleMapper;
 
 	@Override
-	public List<Article> selectAll() {
-
-		return articleMapper.selectAll();
-//		ArrayList<Article> articles = new ArrayList<>();
-//		Article article = new Article();
-//		Date date = new Date(System.currentTimeMillis());
-//		article.setCreated(date);
-//		article.setContent("test");
-//		article.setTitle("test ti");
-//
-//		articles.add(article);
-//
-//		return articles;
+	public PageInfo<Article> selectByPageHelper(Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		List<Article> articles = articleMapper.selectAll();
+		return new PageInfo<>(articles);
 	}
 }

@@ -12,4 +12,5 @@ public interface ArticleMapper {
 
 	@Select("select * from t_article")
 	List<Article> selectAll();
+
 }

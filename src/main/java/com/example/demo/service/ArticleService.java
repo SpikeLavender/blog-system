@@ -1,9 +1,9 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Article;
 
-import java.util.List;
+import com.example.demo.entity.Article;
+import com.github.pagehelper.PageInfo;
 
 public interface ArticleService {
-	List<Article> selectAll();
+	PageInfo<Article> selectByPageHelper(Integer pageNum, Integer pageSize);
 }
